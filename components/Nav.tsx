@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import Link from "next/link"
@@ -14,8 +13,8 @@ import {
 import { Button } from "./ui/button"
 
 const Nav = () => {
-  // const { data: session } = useSession()
-  const isLog = true
+  const { data: session } = useSession()
+  // const isLog = true
 
   const [providers, setProviders] = useState<Record<
     string,
@@ -47,105 +46,101 @@ const Nav = () => {
       </Link>
       {/* Desktop Navigation */}
       <div className={"hidden sm:flex"}>
-        {
-          /* {session?.user ? */ isLog ? (
-            <div className="flex gap-3 md:gap-5">
-              <Link href="/create-prompt" className={"black_btn"}>
-                Create Post
-              </Link>
-              <Button
-                type="button"
-                onClick={() => signOut()}
-                className="outline_btn"
-              >
-                Sign Out
-              </Button>
-              <Link href="/profile">
-                <Image
-                  src={"/assets/images/profile.svg"}
-                  alt={"Profile"}
-                  width={37}
-                  height={37}
-                  className={"rounded-full"}
-                />
-              </Link>
-            </div>
-          ) : (
-            <>
-              {providers &&
-                Object.values(providers).map((provider) => (
-                  <Button
-                    key={provider.name}
-                    type="button"
-                    onClick={() => signIn(provider.id)}
-                    className="black_btn"
-                  >
-                    Sign In
-                  </Button>
-                ))}
-            </>
-          )
-        }
-      </div>
-      {/* mobile Navigation */}
-      <div className={"relative flex sm:hidden"}>
-        {
-          /* {session?.user ? */ isLog ? (
-            <div className="flex">
+        {session?.user ? (
+          <div className="flex gap-3 md:gap-5">
+            <Link href="/create-prompt" className={"black_btn"}>
+              Create Post
+            </Link>
+            <Button
+              type="button"
+              onClick={() => signOut()}
+              className="outline_btn"
+            >
+              Sign Out
+            </Button>
+            <Link href="/profile">
               <Image
-                src={"/assets/images/profile.svg"}
+                src={session?.user.image || "/assets/images/profile.svg"}
                 alt={"Profile"}
                 width={37}
                 height={37}
                 className={"rounded-full"}
-                onClick={() => setToggleDropdown((prev) => !prev)}
               />
+            </Link>
+          </div>
+        ) : (
+          <>
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <Button
+                  key={provider.name}
+                  type="button"
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn"
+                >
+                  Sign In
+                </Button>
+              ))}
+          </>
+        )}
+      </div>
+      {/* mobile Navigation */}
+      <div className={"relative flex sm:hidden"}>
+        {session?.user ? (
+          <div className="flex">
+            <Image
+              src={session?.user.image || "/assets/images/profile.svg"}
+              alt={"Profile"}
+              width={37}
+              height={37}
+              className={"rounded-full"}
+              onClick={() => setToggleDropdown((prev) => !prev)}
+            />
 
-              {toggleDropdown && (
-                <div className="dropdown">
-                  <Link
-                    href="/profile"
-                    className="dropdown_link"
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    My Profile
-                  </Link>
-                  <Link
-                    href="/profile"
-                    className="dropdown_link"
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    Create Prompt
-                  </Link>
-                  <Button
-                    type="button"
-                    onClick={() => {
-                      setToggleDropdown(false)
-                      signOut()
-                    }}
-                    className="black_btn mt-5 w-full"
-                  >
-                    Sign Out
-                  </Button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <>
-              {providers &&
-                Object.values(providers).map((provider) => (
-                  <Button
-                    key={provider.name}
-                    type="button"
-                    onClick={() => signIn(provider.id)}
-                    className="black_btn"
-                  >
-                    Sign In
-                  </Button>
-                ))}
-            </>
-          )
-        }
+            {toggleDropdown && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  My Profile
+                </Link>
+                <Link
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  Create Prompt
+                </Link>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    setToggleDropdown(false)
+                    signOut()
+                  }}
+                  className="black_btn mt-5 w-full"
+                >
+                  Sign Out
+                </Button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <>
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <Button
+                  key={provider.name}
+                  type="button"
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn"
+                >
+                  Sign In
+                </Button>
+              ))}
+          </>
+        )}
       </div>
     </nav>
   )
