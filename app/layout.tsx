@@ -6,6 +6,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import Nav from "@components/Nav"
+import Provider from "@components/Provider"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -41,6 +42,7 @@ export default function RootLayout({
       )}
     >
       <body>
+        <Provider>
         <div className="main">
           <div className="gradient" />
         </div>
@@ -50,6 +52,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </main>
+        </Provider>
       </body>
     </html>
   )
