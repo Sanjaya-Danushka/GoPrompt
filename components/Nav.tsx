@@ -33,7 +33,7 @@ const Nav = () => {
   }, [])
 
   return (
-    <nav className={"flex-between mb-16 w-full px-10 pt-3"}>
+    <nav className="nav_bar flex-between sticky top-0 z-50 mb-10 w-full px-6 py-4 sm:px-10">
       <Link href={"/"} className={"flex-center flex gap-2"}>
         <Image
           src={"/assets/images/logo.svg"}
@@ -107,7 +107,7 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
-                  href="/profile"
+                  href="/create-prompt"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >

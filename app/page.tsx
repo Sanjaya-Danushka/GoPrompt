@@ -1,22 +1,14 @@
-import React from "react"
-import Feed from "../components/Feed"
+import Features from "@components/Features"
+import Feed from "@components/Feed"
+import Hero from "@components/Hero"
 
 const Home = () => {
   return (
-    <section className="flex-center w-full flex-col">
-      <h1 className="head_text text-center">
-        Discover & Share
-        <br />
-        <br className="max-md:hidden" />
-        <span className="orange_gradient text-center">AI Prompts</span>
-      </h1>
-      <p className="desc text-center">
-        GoPrompt is an open-source AI prompting tool for modern world to
-        discover, create and share creative prompts
-      </p>
-      {/* feed */}
+    <div className="flex w-full flex-col">
+      <Hero />
+      <Features />
       <Feed />
-    </section>
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
+import Footer from "@components/Footer"
 import Nav from "@components/Nav"
 import Provider from "@components/Provider"
 
@@ -41,17 +42,18 @@ export default function RootLayout({
         geist.variable
       )}
     >
-      <body>
+      <body className="min-h-screen">
         <Provider>
-        <div className="main">
-          <div className="gradient" />
-        </div>
-        <main className="relative z-10">
-          <ThemeProvider>
-            <Nav />
-            {children}
-          </ThemeProvider>
-        </main>
+          <div className="main">
+            <div className="gradient" />
+          </div>
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <ThemeProvider>
+              <Nav />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </ThemeProvider>
+          </div>
         </Provider>
       </body>
     </html>

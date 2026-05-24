@@ -164,7 +164,7 @@
 
 /* Feed Component */
 .feed {
-  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+  @apply mx-auto w-full flex flex-col gap-2;
 }
 
 /* Form Component */
@@ -199,7 +199,11 @@
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-2xl border border-gray-200/90 bg-white/70 bg-clip-padding p-6 pb-4 shadow-sm backdrop-blur-lg backdrop-filter transition-shadow md:w-[360px] w-full h-fit;
+
+  @variant hover {
+    @apply shadow-md shadow-violet-500/5 border-violet-200/60;
+  }
 }
 
 .flex-center {
@@ -216,4 +220,73 @@
 
 .flex-between {
   @apply flex justify-between items-center;
+}
+
+/* Homepage */
+.nav_bar {
+  @apply border-b border-gray-200/60 bg-white/70 backdrop-blur-xl;
+}
+
+.hero_section {
+  @apply relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-6 pt-8 pb-4 md:pt-14 md:pb-8;
+
+  @variant sm {
+    @apply px-16;
+  }
+}
+
+.hero_badge {
+  @apply mb-6 inline-flex items-center gap-2 rounded-full border border-violet-200/80 bg-white/80 px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm backdrop-blur;
+}
+
+.hero_gradient {
+  @apply bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent;
+}
+
+.hero_btn_primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-all;
+
+  @variant hover {
+    @apply bg-gray-800 -translate-y-0.5;
+  }
+}
+
+.hero_btn_secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white/80 px-6 py-3 text-sm font-semibold text-gray-800 backdrop-blur transition-all;
+
+  @variant hover {
+    @apply border-gray-400 bg-white;
+  }
+}
+
+.feature_card {
+  @apply rounded-2xl border border-gray-200/80 bg-white/60 p-6 shadow-sm backdrop-blur transition-all;
+
+  @variant hover {
+    @apply -translate-y-1 border-violet-200/80 shadow-md shadow-violet-500/10;
+  }
+}
+
+.feature_icon {
+  @apply flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100;
+}
+
+.feed_header {
+  @apply flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between;
+}
+
+.feed_count {
+  @apply rounded-full border border-gray-200 bg-white/80 px-4 py-2 text-sm font-medium text-gray-600 backdrop-blur;
+}
+
+.footer_link {
+  @apply text-sm text-gray-600 transition-colors;
+
+  @variant hover {
+    @apply text-violet-600;
+  }
+}
+
+.footer {
+  @apply relative z-10;
 }
