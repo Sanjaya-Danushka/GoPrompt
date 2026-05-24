@@ -3,6 +3,23 @@ import GoogleProvider from "next-auth/providers/google"
 import connectToDatabase from "@utils/database"
 import User from "@models/user"
 
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id?: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    }
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id?: string;
+  }
+}
+
 const handler = NextAuth({
   providers: [
     GoogleProvider({
@@ -11,13 +28,20 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session }) {
-      const sessionuser = await User.findOne({ email: session.user?.email })
-
-      if (sessionuser) {
-        session.user.id = sessionuser._id.toString()
+    async jwt({ token }) {
+      if (!token.id && token.email) {
+        await connectToDatabase()
+        const sessionUser = await User.findOne({ email: token.email })
+        if (sessionUser) {
+          token.id = sessionUser._id.toString()
+        }
       }
-
+      return token
+    },
+    async session({ session, token }) {
+      if (session?.user && token.id) {
+        session.user.id = token.id
+      }
       return session
     },
     async signIn({ profile }) {
@@ -33,7 +57,11 @@ const handler = NextAuth({
             email: profile.email,
             username:
               profile.name?.replace(" ", "").toLowerCase() ?? profile.email,
-            image: profile.picture,
+            image:
+              (profile as unknown as { picture?: string; image?: string })
+                .picture ??
+              (profile as unknown as { picture?: string; image?: string })
+                .image,
           })
         }
 
