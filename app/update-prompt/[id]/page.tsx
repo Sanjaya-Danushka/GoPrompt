@@ -74,7 +74,9 @@ const UpdatePrompt = () => {
 
   if (loading) {
     return (
-      <p className="desc mx-10 text-left">Loading prompt...</p>
+      <div className="page_container py-20">
+        <p className="text-gray-500">Loading prompt…</p>
+      </div>
     )
   }
 

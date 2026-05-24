@@ -5,9 +5,9 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="footer mt-auto w-full border-t border-gray-200/80 bg-white/60 backdrop-blur-xl">
-      <div className="app py-12">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="footer mt-auto w-full">
+      <div className="page_container py-14">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2">
               <Image
@@ -15,70 +15,67 @@ const Footer = () => {
                 alt="GoPrompt"
                 width={28}
                 height={28}
+                className="brightness-0 invert"
               />
-              <span className="font-satoshi text-lg font-semibold text-gray-900">
+              <span className="font-satoshi text-lg font-semibold text-white">
                 GoPrompt
               </span>
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-600">
-              Discover, create, and share AI prompts with a growing community of
-              creators and builders.
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">
+              The open prompt hub for AI builders. Discover proven prompts,
+              share your own, and level up every workflow — free forever.
             </p>
           </div>
 
           <div>
-            <h4 className="font-satoshi text-sm font-semibold uppercase tracking-wider text-gray-900">
-              Product
-            </h4>
+            <h4 className="footer_heading">Platform</h4>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/#prompts" className="footer_link">
-                  Explore prompts
+                <Link href="/feed" className="footer_link">
+                  Browse feed
                 </Link>
               </li>
               <li>
                 <Link href="/create-prompt" className="footer_link">
-                  Create prompt
+                  New prompt
                 </Link>
               </li>
               <li>
                 <Link href="/profile" className="footer_link">
-                  My profile
+                  Your profile
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-satoshi text-sm font-semibold uppercase tracking-wider text-gray-900">
-              Community
-            </h4>
+            <h4 className="footer_heading">Connect</h4>
             <ul className="mt-4 space-y-3">
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Sanjaya-Danushka/GoPrompt"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer_link"
                 >
-                  GitHub
+                  Star on GitHub
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@goprompt.app" className="footer_link">
-                  Contact
+                <a href="mailto:dsanjaya712@gmail.com" className="footer_link">
+                  Say hello
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200/80 pt-8 sm:flex-row">
+        <div className="footer_bottom">
           <p className="text-sm text-gray-500">
-            © {year} GoPrompt. All rights reserved.
+            © {year} GoPrompt. Crafted for the AI-native generation.
           </p>
           <p className="text-sm text-gray-500">
-            Built for the next generation of AI creators.
+            Copy. Create. Share.
           </p>
         </div>
       </div>

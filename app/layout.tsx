@@ -17,8 +17,9 @@ const fontMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "GoPrompt",
-  description: "Discover, Create, and Share AI Prompts",
+  title: "GoPrompt — Discover & Share AI Prompts",
+  description:
+    "Publish and discover battle-tested AI prompts for ChatGPT, Claude, and more. Copy in one click. Free and open.",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -42,7 +43,7 @@ export default function RootLayout({
         geist.variable
       )}
     >
-      <body className="min-h-screen">
+      <body className="min-h-screen bg-transparent text-gray-900 antialiased">
         <Provider>
           <div className="main">
             <div className="gradient" />
