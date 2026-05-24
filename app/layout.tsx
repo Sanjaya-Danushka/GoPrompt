@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
+import Footer from "@components/Footer"
 import Nav from "@components/Nav"
 import Provider from "@components/Provider"
 
@@ -16,8 +17,9 @@ const fontMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "GoPrompt",
-  description: "Discover, Create, and Share AI Prompts",
+  title: "GoPrompt — Discover & Share AI Prompts",
+  description:
+    "Publish and discover battle-tested AI prompts for ChatGPT, Claude, and more. Copy in one click. Free and open.",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -41,17 +43,18 @@ export default function RootLayout({
         geist.variable
       )}
     >
-      <body>
+      <body className="min-h-screen bg-transparent text-gray-900 antialiased">
         <Provider>
-        <div className="main">
-          <div className="gradient" />
-        </div>
-        <main className="relative z-10">
-          <ThemeProvider>
-            <Nav />
-            {children}
-          </ThemeProvider>
-        </main>
+          <div className="main">
+            <div className="gradient" />
+          </div>
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <ThemeProvider>
+              <Nav />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </ThemeProvider>
+          </div>
         </Provider>
       </body>
     </html>
